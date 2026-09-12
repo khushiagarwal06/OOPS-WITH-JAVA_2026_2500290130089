@@ -39,7 +39,6 @@ class Book{
         return isbn;
     }
 
-
 }
 public class usecase1 {
     public static void main(String[] args) {
