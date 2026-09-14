@@ -1,19 +1,23 @@
 public class UseCase5 {
-    class TicketCounter {
-        private int availableTickets;
+    class TicketCounter implements Runnable {
+    int availableTickets = 3;
 
-        public TicketCounter(int availableTickets) {
-            this.availableTickets = availableTickets;
+    @Override
+    public void run() {
+        while (availableTickets > 0) {
+            bookTickets();
         }
+    }
 
-        public synchronized void bookTicket(int ticketsToBook) {
-            if (ticketsToBook <= availableTickets) {
-                System.out.println("Booking " + ticketsToBook + " tickets.");
-                availableTickets -= ticketsToBook;
-                System.out.println("Tickets booked successfully. Remaining tickets: " + availableTickets);
-            } else {
-                System.out.println("Not enough tickets available. Remaining tickets: " + availableTickets);
-            }
+    synchronized void bookTickets() {
+        if (availableTickets > 0) {
+            availableTickets = availableTickets - 1;
+            
+            System.out.println("Ticket booked by " + Thread.currentThread().getName());
+            System.out.println("Left tickets are " + availableTickets);
+        } else {
+            System.out.println("Tickets are sold out");
         }
+    }
     }
 }
