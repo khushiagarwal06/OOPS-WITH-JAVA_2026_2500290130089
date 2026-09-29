@@ -11,5 +11,7 @@ public class map {
         for (Map.Entry<Integer, Integer> i : hm.entrySet()) {
             System.out.println(i.getKey() + ": " + i.getValue());
         }
+        hm.put(10 , 89 );
+        hm.remove(12);
     }
 }
