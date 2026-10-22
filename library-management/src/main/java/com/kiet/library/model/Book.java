@@ -1,12 +1,25 @@
 package com.kiet.library.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+
+@Entity
+@Table(name = "books")
 public class Book {
 
+    @Id
+    @Column(name = "book_id")
     private int bookId;
+
     private String title;
     private String author;
     private String category;
+
+    @Column(name = "publication_year")
     private int publicationYear;
+
     private boolean available;
 
     public Book() {
@@ -67,6 +80,6 @@ public class Book {
     }
 
     public void setAvailable(boolean available) {
-        this.available = available;
+        this.available =available;
     }
 }
